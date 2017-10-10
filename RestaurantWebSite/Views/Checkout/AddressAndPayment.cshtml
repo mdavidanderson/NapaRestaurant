@@ -1,0 +1,35 @@
+﻿@model RestaurantWebSite.Models.Order
+@{ 
+    ViewBag.Title = "Address And Payment";
+}
+<!--skipped validation because script jquery is giving rum time error-->
+
+
+@using (Html.BeginForm())
+{
+    <h2>Address And Payment</h2>
+    <fieldset>
+        <legend>Shipping Information</legend>
+        @Html.EditorForModel()
+    </fieldset>
+    <fieldset>
+        <legend>Payment</legend>
+        <div class="editor-label">
+            @Html.Label("Card Number")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("cardNumber")
+        </div>
+
+        <p>We're running a promotion: Your order is free wtih this promo code: "Free"</p>
+
+        <div class="editor-label">
+            @Html.Label("Promo Code")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("PromoCode")
+        </div>
+
+    </fieldset>
+    <input type="submit" value="Submit Order" />
+}

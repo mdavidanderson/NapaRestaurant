@@ -1,0 +1,92 @@
+﻿@model RestaurantWebSite.ViewModels.OrderCartViewModel
+@{ 
+    ViewBag.Title = "Order";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".RemoveLink").click(function () {
+            var recordToDelete = $(this).attr("data-id");
+
+            if (recordToDelete != '') {
+                $.post("/OrderCart/RemoveFromCart", { "id": recordToDelete },
+                    function (data) {
+                        if (data.ItemCount ==0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+
+                        } else{
+                            $('#item-count-' + data.DeletedId).text(data.ItemCount);
+                        }
+                        
+                        $('#cart-toal').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+    });
+
+    function handleUpdate() {
+        var json = context.get_data();
+        var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
+
+        if (data.ItemCount == 0){
+            $('#row-' + data.DeleteId).fadeOut('slow');
+
+        } else{
+            $('#item-count-' + data.DeletedId).text(data.ItemCount);
+        }
+        $('#cart-toal').text(data.CartTotal);
+        $('#update-message').text(data.Message);
+        $('#cart-status').text('Cart (' + data.CartCount + ')');
+        
+    }
+</script>
+<h3>
+    <em>Review your order:</em>
+</h3>
+<p class="button">
+    @Html.ActionLink("Checkout >>", "AddressAndPayment", "Checkout")
+</p>
+<div id="update-message">
+</div>
+<table>
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.CartItems)
+    {
+        <tr id="row-@item.RecordId">
+            <td>
+                @Html.ActionLink(item.Item.ItemName, "Details", "Store", new { id = item.ItemId }, null)
+            </td>
+            <td id="item-count-@item.RecordId">
+                @item.Count
+            </td>
+            <td>
+                <a href="#" class="RemoveLink" data-id="@item.RecordId">Remove From order</a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>
+            Total
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td id="cart-total">
+            @Model.CartTotal
+        </td>
+    </tr>
+</table>

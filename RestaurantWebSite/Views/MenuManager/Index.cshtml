@@ -1,0 +1,79 @@
+﻿@model IEnumerable<RestaurantWebSite.Models.Item>
+
+@helper Truncate(string input, int length)
+{
+
+if (input.Length <= length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>.....</text>
+}
+
+}
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2 align="center">Manage Dish Inventory</h2>
+<hr style="border:0; height: 1px; background-image:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.75), rgba(0,0,0,0))">
+<br />
+
+
+<p>
+    @Html.ActionLink("Create New", "Create","", new { @class = "btn btn-info btn-sm" })
+    <br/>
+
+</p>
+
+<div class="table-responsive">
+<table class="table table-bordered table-hover" width="647">
+    <thead style="color:white; background-color:black;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </th>
+        <th></th>
+    </tr>
+        </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemCategory)
+        </td>
+        <td>
+            @Truncate(item.ItemDescription, 25)
+         
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>
