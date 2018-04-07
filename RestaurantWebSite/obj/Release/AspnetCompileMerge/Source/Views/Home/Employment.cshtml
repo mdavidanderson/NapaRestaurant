@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Employment";
+}
+
+<h1 align="center">Employment Opportunities</h1>
+<hr style="border:0; height: 1px; background-image:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.75), rgba(0,0,0,0))">
+
+<br />
+<div class="container">
+    <div class="row">
+
+        <br/><br/><br />
+        <div class="col-xs-6">
+            <div class="jumbotron">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 style="color: white; background-color: rgba(0, 0, 0, 0.5); padding: 10px;">Join Us!</h3>
+
+                        <p>
+                            Are you looking for the next adventure in your life?
+                            Apply now for a fresh new challenge. Are you passionate
+                            about great food and excellent service? Are you looking
+                            for a challenge and to be part of the start-up team of a
+                            fabulous and exciting new venture. NAPA offers
+                            a great place to work, with a lively environment, flexible
+                            hours and potential opportunity to move up within an exciting
+                            growing company. We offer various positions depending on experience.
+
+                        </p>
+
+                        <p>
+                            Simply email your resume to HRt@example.com and a member of our
+                            team will be in contact with you shortly. You can always contact us
+                            throught our website as well By following the link below. <br/><br/>
+
+                            @Html.ActionLink("Let's Go", "ContactUs", "Home", null, new { @class = "btn btn-info" })
+
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="well" style="background-color:rgba(0, 0, 0, 0.50); width:640px;">
+                <img src="~/Content/images/4.jpg" style="height:400px; background-size: 100% 100%;" />
+            </div>
+        </div>
+        <br/>
+        <div class="col-xs-6">
+            <div class="well" style="background-color:rgba(0, 0, 0, 0.50); width:640px;">
+                <img src="~/Content/images/cover68.jpg" style="height:400px; background-size: 100% 100%;" />
+            </div>
+        </div>
+        
+
+
+
+
+
+    </div>
+</div>
+

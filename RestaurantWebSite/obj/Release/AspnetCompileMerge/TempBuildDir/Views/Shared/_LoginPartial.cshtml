@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!--Request.IsAuthenticated && User.IsInRole("Manager") ANOTHER WAY TO CHECK FOR ROLES-->
+
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("Manager"))
+    {
+        // WHAT REGISTER USERS AS MANAGERS CAN SEE
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <!-- DropDown -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Manager</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li>@Html.ActionLink("Manage Food", "Index", "MenuManager")</li>
+                        <li>@Html.ActionLink("Manage Orders", "Index", "OrderManager")</li>
+                        <li>@Html.ActionLink("Create Roles", "Index", "Role")</li>
+
+
+                    </ul>
+                </li>
+
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        }
+    }
+    else
+    if (User.IsInRole("Customer"))
+    {
+        //WHAT REGISTER USERS AS CUSTOMERS CAN SEE WHEN LOGIN
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li>@Html.ActionLink("Your Orders", "Index", "OrderManager")</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        }
+    }
+}
+else
+
+{
+    //WHAT PUBLIC CAN SEE WITHOUT LOGIN
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+
+
+}

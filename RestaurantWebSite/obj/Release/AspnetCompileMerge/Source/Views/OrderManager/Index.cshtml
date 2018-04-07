@@ -1,0 +1,62 @@
+﻿@model IEnumerable<RestaurantWebSite.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 align="center">Manage Orders</h1>
+<hr style="border:0; height: 1px; background-image:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.75), rgba(0,0,0,0))">
+<br />
+
+
+<p>
+    <!--@Html.ActionLink("Create New", "Create")-->
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" width="647">
+        <thead style="color:white; background-color:black;">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Total)
+                </th>
+                <th>
+                </th>
+
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }) 
+                    @if(User.IsInRole("Manager")) { 
+                         @Html.ActionLink(" | Delete", "Delete", new { id = item.OrderId })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

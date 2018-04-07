@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="background-image:url(/Content/images/cover.jpg); background-size: 100% 100%;">
+
+    <div class="well">
+        <h1 style="color:white;">
+            Welcome to NAPA
+        </h1>
+        <p style="color:white"> NAPA is joy and happiness through food.</p>
+        <br />
+        @Html.ActionLink("Learn More", "About", "Home", null, new { @class = "btn btn-info" })
+
+        <br />
+    </div>
+</div>
+
+
+
+<!--<div class="container"> -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Order Online</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    NAPA tries to stay up to date with technology. One of our best services is providing
+                    our valuable customers with the option of ordering their food from their living room.
+                </p>
+                @Html.ActionLink("Order Now", "Index", "OrderNow", null, new { @class = "btn btn-success" })
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Employment</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    If you believe you're great with people and you have
+                    a passion for service and food, NAPA is the place for you.
+                    We are successful because of people who think like you do.
+                </p>
+                @Html.ActionLink("Let's Go", "Employment", "Home", null, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>Browse Our Gallery</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Take a look at our most amazing pictures!
+
+                </p>
+                @Html.ActionLink("Show Me", "ImagesSlideShow", "Home", null, new { @class = "btn btn-success" })
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--</div> -->

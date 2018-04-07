@@ -1,0 +1,61 @@
+﻿@model RestaurantWebSite.Models.Item
+
+@{
+    ViewBag.Title = "Breakfast Details";
+}
+
+<h1 align="center">Dish Details</h1>
+<hr style="border:0; height: 1px; background-image:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,0.75), rgba(0,0,0,0))">
+<br />
+
+<div>
+    <hr />
+    <div class="jumbotron">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemImgUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemImgUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemDescription)
+        </dd>
+
+    </dl>
+        </div>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Breakfast","", new { @class = "btn btn-info btn-sm" })
+    
+</p>
